@@ -1,4 +1,4 @@
 netmsg
 ======
 
-Send messages on the network via UDP
+Send messages over the network via UDP.
