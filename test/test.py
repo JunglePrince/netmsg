@@ -1,4 +1,5 @@
 from unittest import TestCase
 
 class TestClass(TestCase):
-	self.assertTrue(True);
+	def test_always_pass(self):
+		self.assertTrue(True)
