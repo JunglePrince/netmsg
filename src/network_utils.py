@@ -1,4 +1,5 @@
 from netmsg_constants import * 
+import socket
 
 def parse_and_validate_port(portString):
     """Parses and validates a port number from a string.
@@ -23,3 +24,11 @@ def parse_and_validate_port(portString):
 
     except (ValueError, TypeError) as e: 
         return None
+
+def get_udp_socket(port):
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.bind(("", port))
+        return "000.000.000.000"
+    except (scoket.error) as e:
+        return None, e[1]
