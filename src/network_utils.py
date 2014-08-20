@@ -1,3 +1,5 @@
+from netmsg_constants import * 
+
 def parse_and_validate_port(portString):
     """Parses and validates a port number from a string.
 
@@ -14,10 +16,10 @@ def parse_and_validate_port(portString):
     """
     try:
         port = int(portString)
-        if port < 1024 or port > 65535:
+        if port < PORT_RANGE_LOW or port > PORT_RANGE_HIGH:
             return None
 
         return port
 
-    except ValueError: 
+    except (ValueError, TypeError) as e: 
         return None

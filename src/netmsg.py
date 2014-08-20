@@ -1,7 +1,7 @@
 #!/usr/bin/python2
 
 import sys
-import network_utils
+from network_utils import *
 
 def _print_usage(errorMsg=""):
     if errorMsg:
@@ -44,26 +44,20 @@ print "Sends messages over the network via UDP."
 print "==========================================\n"
 
 # read the arguments and run server or client version
-server, port = _parse_args()
+server, port = _get_args()
+port = parse_and_validate_port(port)
+
+if not port:
+    _print_port_instuctions()
+    _print_usage()
+    sys.exit(1)
 
 if server:
     # a server was specified, run in client mode
-    port = network_utils.parse_and_validate_port(port)
-    if not port:
-        _print_port_instuctions()
-        _print_usage()
-        sys.exit(1)
-    
     _run_client(server, port)
 
 elif port:
     # no server was specified, run in server mode
-    port = network_utils.parse_and_validate_port(port)
-    if not port:
-        _print_port_instuctions()
-        _print_usage()
-        sys.exit(1)
-    
     _run_server(port)
 
 else: 
