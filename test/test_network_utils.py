@@ -2,7 +2,7 @@ import sys
 sys.path.append('../src')
 
 import unittest
-import network_utils import * 
+from network_utils import * 
 from netmsg_constants import *
 
 class TestNetworkUtils(unittest.TestCase):
