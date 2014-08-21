@@ -8,7 +8,7 @@ from netmsg_constants import *
 class TestNetworkUtils(unittest.TestCase):
     def test_parse_and_validate_port_range(self):
         #valid range
-        self.assertEqual(parse_and_validate_port("1024"), 10524)
+        self.assertEqual(parse_and_validate_port("1024"), 1024)
         self.assertEqual(parse_and_validate_port("65535"), 65535)
         #invalid range
         self.assertIsNone(parse_and_validate_port("1023"))
