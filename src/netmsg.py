@@ -16,16 +16,16 @@ def _print_port_instuctions():
 def _get_args():
     """Gets the arguments passed from the command line.
 
-    Gets all of the the 
+    Gets all of the the
 
     Returns:
-        A two element tuple containing the provided command line arguments in 
-        the format: (server, port). If any of the arguments were not provided 
+        A two element tuple containing the provided command line arguments in
+        the format: (server, port). If any of the arguments were not provided
         they will be None.
     """
     numArgs = len(sys.argv)
 
-    if numArgs == 2: 
+    if numArgs == 2:
         return None, sys.argv[1]
     elif numArgs == 3:
         return sys.argv[1], sys.argv[2]
@@ -33,7 +33,10 @@ def _get_args():
         return None, None
 
 def _run_server(port):
-    pass
+    socket, error = get_udp_socket(port)
+
+    if (socket):
+        print "IP Address: ".join(str(socket.getsockname()[0]))
 
 def _run_client(server, port):
     pass
@@ -60,6 +63,6 @@ elif port:
     # no server was specified, run in server mode
     _run_server(port)
 
-else: 
+else:
     _print_usage()
     sys.exit(1)
